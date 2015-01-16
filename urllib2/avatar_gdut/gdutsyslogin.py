@@ -29,7 +29,7 @@ class login(object):
     """
 
     def __init__(self, username, password):
-        self.loginUrl = 'http://eswis.gdut.edu.cn/default.aspx'
+        self.loginUrl = 'http://gdut.eswis.cn/default.aspx'
         self.name = username
         self.password = password
         self.html = self.getHtml(self.loginUrl)
@@ -86,8 +86,8 @@ class login(object):
         cookie = cookielib.CookieJar()
         opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie))
         headers = {
-                    'POST': 'http://eswis.gdut.edu.cn/default.aspx',
-                    'Host': 'eswis.gdut.edu.cn',
+                    'POST': 'http://gdut.eswis.cn/default.aspx',
+                    'Host': 'gdut.eswis.cn',
                     'Referer': 'http://eswis.gdut.edu.cn/',
                     'Cookie': 'ASP.NET_SessionId=v2aba03ra5j3dvrrmo2dnq45',
                     'User-Agent':'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'
@@ -96,11 +96,12 @@ class login(object):
             '__EVENTTARGET': '',
             '__EVENTARGUMENT': '',
             '__VIEWSTATE': hiddenPostData[0],
+            '__VIEWSTATEGENERATOR': hiddenPostData[1],
             'ctl00$dft_page$log_username': self.name,
             'ctl00$dft_page$log_password': self.password,
             'ctl00$dft_page$logon': '',
-            '__PREVIOUSPAGE': hiddenPostData[1],
-            '__EVENTVALIDATION': hiddenPostData[2]
+            '__PREVIOUSPAGE': hiddenPostData[2],
+            '__EVENTVALIDATION': hiddenPostData[3]
             })
         req = urllib2.Request(
             url = self.loginUrl,

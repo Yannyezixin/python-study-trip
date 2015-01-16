@@ -63,7 +63,7 @@ class spliderGradeThread(threading.Thread):
         print "准备抓取图片中..."
         for i in range(self.preNum, self.nextNum):
             sno = self.structureSno(i, self.enrolYear)
-            url = "http://gdutfile.eswis.cn/upfiles/{num}/userpic/20{enrolYear}/{sno}.jpg".format(
+            url = "http://gdut.eswis.cn/upfiles/{num}/userpic/20{enrolYear}/{sno}.jpg".format(
                     num = num, enrolYear = str(self.enrolYear), sno = sno)
             storagePath = self.getStoragePath(self.enrolYear, sno + '.jpg')
             if self.checkImgUrlStatus(url, False):
